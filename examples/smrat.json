@@ -1,0 +1,16 @@
+{
+    "colorspace": "rgb",
+    "coloroptions": [["red", "green", "blue"], [8, 2, 8], [false, false, true]],
+    "wavelist":
+    {
+        "zoom": {"cx": 0.0, "cy": 0.0, "x": 640, "y": 360, "z": 1.0},
+        "guid": "eb5f9cf4-9541-4e1f-b04e-44ceadc893fa",
+        "waves":
+        [
+            {"amp": 0.356725, "cx": 2.008187, "cy": -3.356086, "exp": 1, "freq": 3, "phase": 0.996851},
+            {"amp": 0.530763, "cx": 2.924109, "cy": 5.259152, "exp": 3, "freq": 2, "phase": 3.51363},
+            {"amp": 0.479494, "cx": -4.08501, "cy": -4.258618, "exp": 1, "freq": 2, "phase": 0.788228},
+            {"amp": 0.461836, "cx": 4.223394, "cy": -4.435429, "exp": 1, "freq": -2, "phase": 0.650822}
+        ]
+    }
+}

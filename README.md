@@ -55,3 +55,6 @@ exceptions are few and make sense.
 
 The default aspect ratio is 16:9 if either -x or -y is missing.
 ```
+## Examples
+
+<p style="text-align:center;"><img src="art/AssignableControllers.png" width="375"  alt="Assignable Controllers" title="Assignable Controllers"/></p>
