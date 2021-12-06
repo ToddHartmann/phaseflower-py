@@ -696,21 +696,21 @@ def fillit(s): return textwrap.fill(' '.join(s.split()))
 
 def main():
     depi = '\n'.join( [
-        'cyko                = make random png w/ default 640:360 zoom=1',
-        'cyko -n N           = make N random pngs',
-        'cyko -n N -o outdir = make N random pngs in outdir',
-        'cyko -y 1080        = make 1 random png w/ height=1080',
-        'cyko -s S           = make random movie S seconds long',
-        'cyko -r R           = make random movie w/ framerate R',
-        'cyko -s S -y 1080   = make random movie S seconds long and 1080 pixels high',
-        'cyko -i name.ext    = make movie from input file (.json, .mp4, or .png)',
-        'cyko -i waves.ext -ic color.ext',
+        'phaseflower                = make random png w/ default 640:360 zoom=1',
+        'phaseflower -n N           = make N random pngs',
+        'phaseflower -n N -o outdir = make N random pngs in outdir',
+        'phaseflower -y 1080        = make 1 random png w/ height=1080',
+        'phaseflower -s S           = make random movie S seconds long',
+        'phaseflower -r R           = make random movie w/ framerate R',
+        'phaseflower -s S -y 1080   = make random movie S seconds long and 1080 pixels high',
+        'phaseflower -i name.ext    = make movie from input file (.json, .mp4, or .png)',
+        'phaseflower -i waves.ext -ic color.ext',
         '                    = make movie using waves from -i and colors from -ic',
-        'cyko -o outdir      = make random movie in outdir',
-        'cyko -o out.mp4     = make random movie in out.mp4',
-        'cyko -i name.ext -oj outname.json',
+        'phaseflower -o outdir      = make random movie in outdir',
+        'phaseflower -o out.mp4     = make random movie in out.mp4',
+        'phaseflower -i name.ext -oj outname.json',
         '                    = output the JSON to a file and exit',
-        'cyko -oj name.ext   = make a JSON file with random waves and colors',
+        'phaseflower -oj name.ext   = make a JSON file with random waves and colors',
         '\nYou cannot make thumbnails and movies at the same time.  Neither can',
         'you make thumbnails and JSON at the same time (you get thumbnails),',
         'nor JSON and movies at the same time (you get JSON).  Other than',
@@ -758,7 +758,7 @@ def statme(pr):
     s = io.StringIO()
     sortby = 'tottime' #'cumulative'
     ps = pstats.Stats(pr, stream=s).strip_dirs().sort_stats(sortby)
-    ps.print_stats(20)#'cyko.py:')
+    ps.print_stats(20)#'phaseflower.py:')
     print(s.getvalue())
 """
 
