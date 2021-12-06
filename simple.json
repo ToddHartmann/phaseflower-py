@@ -1,0 +1,13 @@
+{
+    "colorspace": "rgb",
+    "coloroptions": [["red", "green", "blue"], [1, 1, 1], [false, false, false]],
+    "wavelist":
+    {
+        "zoom": {"cx": 0.0, "cy": 0.0, "x": 512, "y": 512, "z": 1.0},
+        "guid": "b911419e-54e5-4d8f-a758-d17df9d993fb",
+        "waves":
+        [
+            {"amp": 0.999999, "cx": 0.0, "cy": 0.0, "exp": 1, "freq": 1, "phase": 0.0}
+        ]
+    }
+}
