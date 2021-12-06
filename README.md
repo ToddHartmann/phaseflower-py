@@ -58,7 +58,7 @@ The default aspect ratio is 16:9 if either -x or -y is missing.
 ## Examples
 
 
-[![Simple](https://img.youtube.com/vi/7Hb88SFlkUY/0.jpg)](https://www.youtube.com/watch?v=7Hb88SFlkUY)
+[![Simple](https://img.youtube.com/vi/7Hb88SFlkUY/0.jpg)](https://www.youtube.com/watch?v=7Hb88SFlkUY)\
 [simple.json](examples/simple.json)
 ```
 {
@@ -76,7 +76,7 @@ The default aspect ratio is 16:9 if either -x or -y is missing.
 }
 ```
 
-[![Simple](https://img.youtube.com/vi/xdwipXjREdA/0.jpg)](https://www.youtube.com/watch?v=xdwipXjREdA)
+[![Simple](https://img.youtube.com/vi/xdwipXjREdA/0.jpg)](https://www.youtube.com/watch?v=xdwipXjREdA)\
 [smrat.json](examples/smrat.json)
 
 ```
@@ -98,7 +98,7 @@ The default aspect ratio is 16:9 if either -x or -y is missing.
 }
 ```
 
-[![Greenrose](https://img.youtube.com/vi/QxRH4npChq4/0.jpg)](https://www.youtube.com/watch?v=QxRH4npChq4)
+[![Greenrose](https://img.youtube.com/vi/QxRH4npChq4/0.jpg)](https://www.youtube.com/watch?v=QxRH4npChq4)\
 [grose.json](examples/grose.json)
 ```
 {
