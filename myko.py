@@ -7,13 +7,11 @@
 # Created:     12/08/2015
 # Copyright:   (c) toddh 2015
 
-# this "myko" version keeps a 2-D array of complex numbers
+# this version keeps a 2-D array of complex numbers
 # which get rotated w/ multiply instead of a sin()
-# might be 10% faster might not be
+# might be faster might not be
 
 #-------------------------------------------------------------------------------
-
-# hypertrochoid  f(t) = e^(4it) + 0.5e^(-6it), t from 0 to 2pi, plot real vs. imag.
 
 import datetime
 
@@ -48,7 +46,7 @@ def countframe():
 # phase pharameters
 
 pstart = 0
-pstop =  -2 * math.pi     # I don't know why negative looks positive
+pstop =  -2 * math.pi     # negative looks positive
 pstep = (pstop - pstart) / mframes
 
 def setlength(seconds, fps=30, extraFrames=0):
@@ -70,6 +68,7 @@ from functools import partial
 fdtype = np.float32
 
 nparray = partial(np.array, dtype=fdtype)
+npempty = partial(np.empty, dtype=fdtype)
 npones  = partial(np.ones,  dtype=fdtype)
 npzeros = partial(np.zeros, dtype=fdtype)
 nplinspace = partial(np.linspace, dtype=fdtype)
@@ -406,6 +405,32 @@ class colorfields(grayfieldlist):
             writer.grab_frame()
             countframe()
             self.calcframe()
+
+    def ExperiMentalcycle(self, writer, img):
+        start = datetime.datetime.now()
+        opie = "{:3}%  frame {:5} of {:5} time {}"
+        ends = { True : '\n', False : '\r'}
+
+        lrgb = npempty((mframes, zoomer.ysize, zoomer.xsize, 3))
+        for phrame in range(0, mframes):
+
+            percent =  int( round( phrame / mframes, 2 ) * 50.0 )
+            elapsed = str(datetime.datetime.now() - start)
+            print(opie.format(percent, phrame, mframes, elapsed[:-4]), end=ends[phrame == mframes])
+
+            lrgb[phrame] = self.getframe() # self. will try *subclass* getframe first
+            countframe()
+            self.calcframe()
+
+        for phrame in range(0, mframes):
+            percent =  int( round( phrame / mframes, 2 ) * 50.0 + 50.0 )
+            elapsed = str(datetime.datetime.now() - start)
+            print(opie.format(percent, phrame, mframes, elapsed[:-4]), end=ends[phrame == mframes])
+
+#            gauss = gaussian( rgb, 1.5, multichannel=True )  # set multichannel so it doesn't warn about guessing
+            img.set_data( lrgb[phrame] ) # gauss )
+            writer.grab_frame()
+
 
 # end class Colorfields
 
