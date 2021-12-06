@@ -57,7 +57,8 @@ The default aspect ratio is 16:9 if either -x or -y is missing.
 ```
 ## Examples
 
-[simple.mp4](https://www.youtube.com/watch?v=7Hb88SFlkUY)\
+
+[![Simple](https://img.youtube.com/vi/7Hb88SFlkUY/0.jpg)](https://www.youtube.com/watch?v=7Hb88SFlkUY)
 [simple.json](examples/simple.json)
 ```
 {
@@ -75,4 +76,46 @@ The default aspect ratio is 16:9 if either -x or -y is missing.
 }
 ```
 
-<p style="text-align:center;"><img src="examples/smrat.png" width="320"  alt="smrat" title="More Smarter"/></p>
+[![Simple](https://img.youtube.com/vi/xdwipXjREdA/0.jpg)](https://www.youtube.com/watch?v=xdwipXjREdA)
+[smrat.json](examples/smrat.json)
+
+```
+{
+    "colorspace": "rgb",
+    "coloroptions": [["red", "green", "blue"], [8, 2, 8], [false, false, true]],
+    "wavelist":
+    {
+        "zoom": {"cx": 0.0, "cy": 0.0, "x": 640, "y": 360, "z": 1.0},
+        "guid": "eb5f9cf4-9541-4e1f-b04e-44ceadc893fa",
+        "waves":
+        [
+            {"amp": 0.356725, "cx": 2.008187, "cy": -3.356086, "exp": 1, "freq": 3, "phase": 0.996851},
+            {"amp": 0.530763, "cx": 2.924109, "cy": 5.259152, "exp": 3, "freq": 2, "phase": 3.51363},
+            {"amp": 0.479494, "cx": -4.08501, "cy": -4.258618, "exp": 1, "freq": 2, "phase": 0.788228},
+            {"amp": 0.461836, "cx": 4.223394, "cy": -4.435429, "exp": 1, "freq": -2, "phase": 0.650822}
+        ]
+    }
+}
+```
+
+[![Greenrose](https://img.youtube.com/vi/QxRH4npChq4/0.jpg)](https://www.youtube.com/watch?v=QxRH4npChq4)
+[grose.json](examples/grose.json)
+```
+{
+    "colorspace": "luv",
+    "coloroptions": [["l", "u", "v"], [8, 1, 2], [true, false, false]],
+    "wavelist":
+    {
+        "zoom": {"cx": 0.0, "cy": 0.0, "x": 640, "y": 360, "z": 1.0},
+        "guid": "78b5e1d7-7a1c-4b2e-bf1b-80f788958707",
+        "waves":
+        [
+            {"amp": 0.281749, "cx": -2.982593, "cy": -2.568968, "exp": 1, "freq": 4, "phase": 5.193345},
+            {"amp": 0.784343, "cx": -2.451323, "cy": 1.162091, "exp": 1, "freq": -4, "phase": 4.009389},
+            {"amp": 0.917097, "cx": -7.858992, "cy": -5.06226, "exp": 3, "freq": 1, "phase": 0.4588},
+            {"amp": 0.517462, "cx": -7.698834, "cy": 0.771917, "exp": 7, "freq": 4, "phase": 0.43838},
+            {"amp": 0.506322, "cx": 6.590463, "cy": 2.998623, "exp": 1, "freq": -4, "phase": 3.157555}
+        ]
+    }
+}
+```
