@@ -57,7 +57,7 @@ The default aspect ratio is 16:9 if either -x or -y is missing.
 ```
 ## Examples
 
-[simple.mp4](examples/simple.mp4)\
+[simple.mp4](examples/simple2.mp4)\
 [simple.json](examples/simple.json)
 ```
 {
