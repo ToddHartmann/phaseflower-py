@@ -57,4 +57,22 @@ The default aspect ratio is 16:9 if either -x or -y is missing.
 ```
 ## Examples
 
-<p style="text-align:center;"><img src="examples/smrat.png" width="640"  alt="smrat" title="More Smarter"/></p>
+[simple.mp4](examples/simple.mp4)\
+[simple.json](examples/simple.json)
+```
+{
+    "colorspace": "rgb",
+    "coloroptions": [["red", "green", "blue"], [1, 1, 1], [false, false, false]],
+    "wavelist":
+    {
+        "zoom": {"cx": 0.0, "cy": 0.0, "x": 512, "y": 512, "z": 1.0},
+        "guid": "b911419e-54e5-4d8f-a758-d17df9d993fb",
+        "waves":
+        [
+            {"amp": 0.999999, "cx": 0.0, "cy": 0.0, "exp": 1, "freq": 1, "phase": 0.0}
+        ]
+    }
+}
+```
+
+<p style="text-align:center;"><img src="examples/smrat.png" width="320"  alt="smrat" title="More Smarter"/></p>
