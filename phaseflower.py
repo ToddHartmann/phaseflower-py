@@ -406,32 +406,6 @@ class colorfields(grayfieldlist):
             countframe()
             self.calcframe()
 
-    def ExperiMentalcycle(self, writer, img):
-        start = datetime.datetime.now()
-        opie = "{:3}%  frame {:5} of {:5} time {}"
-        ends = { True : '\n', False : '\r'}
-
-        lrgb = npempty((mframes, zoomer.ysize, zoomer.xsize, 3))
-        for phrame in range(0, mframes):
-
-            percent =  int( round( phrame / mframes, 2 ) * 50.0 )
-            elapsed = str(datetime.datetime.now() - start)
-            print(opie.format(percent, phrame, mframes, elapsed[:-4]), end=ends[phrame == mframes])
-
-            lrgb[phrame] = self.getframe() # self. will try *subclass* getframe first
-            countframe()
-            self.calcframe()
-
-        for phrame in range(0, mframes):
-            percent =  int( round( phrame / mframes, 2 ) * 50.0 + 50.0 )
-            elapsed = str(datetime.datetime.now() - start)
-            print(opie.format(percent, phrame, mframes, elapsed[:-4]), end=ends[phrame == mframes])
-
-#            gauss = gaussian( rgb, 1.5, multichannel=True )  # set multichannel so it doesn't warn about guessing
-            img.set_data( lrgb[phrame] ) # gauss )
-            writer.grab_frame()
-
-
 # end class Colorfields
 
 # This one interprets its data as RGB - no translation necessary, just names
