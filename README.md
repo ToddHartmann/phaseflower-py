@@ -28,8 +28,8 @@ optional arguments:
   -x X        Width in pixels (default 360)
   -y Y        Height in pixels (default 640)
   -z Z        Zoom (2=plane half size, .5=2x)
-  -cx CX      Center x-coord in math
-  -cy CY      Center y-coord in math
+  -cx CX      Center x-coord in radians
+  -cy CY      Center y-coord in radians
 
 phaseflower                = make random png w/ default 640:360 zoom=1
 phaseflower -n N           = make N random pngs
@@ -66,7 +66,7 @@ good like `good.png`
 python phaseflower.py -i pix\good.png -o good.mp4
 mpv --loop --fullscreen good.mp4
 ```
-Add arguments like `--y 1080` to get HD, `-s 8` to make it longer.  Make
+Add arguments like `-y 1080` to get HD, `-s 8` to make it longer.  Make
 the length match the tempo of music or 4 measures of music and loop
 it in a music video.
 

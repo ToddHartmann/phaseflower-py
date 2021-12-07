@@ -732,8 +732,8 @@ def main():
     parser.add_argument('-x', required=False, type=int, help='Width in pixels (default 360)')
     parser.add_argument('-y', required=False, type=int, help='Height in pixels (default 640)')
     parser.add_argument('-z', required=False, type=float, help='Zoom (2=plane half size, .5=2x)')
-    parser.add_argument('-cx', required=False, type=float, help='Center x-coord in math')
-    parser.add_argument('-cy', required=False, type=float, help='Center y-coord in math')
+    parser.add_argument('-cx', required=False, type=float, help='Center x-coord in radians')
+    parser.add_argument('-cy', required=False, type=float, help='Center y-coord in radians')
 
     args = parser.parse_args()
     xyz  = ( args.x, args.y, args.z, args.cx, args.cy )
