@@ -119,3 +119,55 @@ The default aspect ratio is 16:9 if either -x or -y is missing.
     }
 }
 ```
+
+## Explanation, Excuses, Etcetera
+
+One day I was automating (in Python) a music art thing I had been doing in 
+[GIMP](https://www.gimp.org/) and
+stumbled across this algorithm that reminded me of 
+[*Flowfazer*](https://apps.apple.com/us/app/flowfazer/id507935335).
+
+The main structure is a list of waves.  Each 2D sine wave gets its own plane.
+These planes are added together (averaged), and then funky colors are applied.
+
+Under the hood, the "sine" is just the imaginary part of a [phasor](https://mathworld.wolfram.com/Phasor.html) plane.  
+So that's the etymology of "*Flowfazer*!"
+
+By making the frequencies of the waves integers, we guarantee they loop.
+
+The fonky colors use
+Scikit-Image's [`color`](https://scikit-image.org/docs/dev/api/skimage.color.html)
+module to turn the averaged waves into color plots.  Each color component
+is a ramp 0 to 1 or inverted, and is modulo-chopped into repeating bands.
+
+The UUID is meant to tag the thing as an individual work of art.  They are clunky
+and I could have used something shorter.  Sorry.
+
+The program seems slow.  Especially since *Flowfazer* ran at a nice 
+frame rate on 680x0 Macintoshes!
+
+There are obvious untaken opportunities for optimization.  For example, there's no reason
+for waves with frequencies greater than one to calculate second, third, or eighth cycles.
+The first cycle should be cached and re-used.  I went with "keep it simple" over speed,
+and to atone have started rewriting it in C++ in hopes of getting it over 30fps.
+
+## JSON Format
+
+Keeping it [simple.json](examples/simple.json)
+```
+    "colorspace": "rgb",
+    "coloroptions": [["red", "green", "blue"], [1, 1, 1], [false, false, false]],
+```
+The name of the `colorspace`, then its options:
+names of the color components, how many bands (repetitions)
+each component has, and whether they are inverted.
+```
+	"zoom": {"cx": 0.0, "cy": 0.0, "x": 512, "y": 512, "z": 1.0},
+```
+Defines where and how much of the plane we see.
+Center x & y, x & y size, zoom level.
+
+```
+	{"amp": 0.999999, "cx": 0.0, "cy": 0.0, "exp": 1, "freq": 1, "phase": 0.0}
+```
+Amplitude, center x & y, exponent, frequency, phase.
