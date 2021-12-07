@@ -172,7 +172,7 @@ Freq of 2, will go through two cycles.
 
 ## Explanation, Excuses, Etcetera
 
-One day I was automating (in Python) a music art thing I had been doing in 
+One day I was automating (in Python) a [music art thing](https://soundcloud.com/todd-hartmann/indexed) I had been doing in 
 [GIMP](https://www.gimp.org/) and
 stumbled across this algorithm that reminded me of 
 [*Flowfazer*](https://apps.apple.com/us/app/flowfazer/id507935335).
