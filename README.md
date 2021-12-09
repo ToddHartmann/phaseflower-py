@@ -3,7 +3,8 @@
 Make nice MP4 video loops.
 
 Works well in [Anaconda](https://www.anaconda.com/)
-but any well-stocked [SciPy](https://scipy.org/) install should do.
+but any well-stocked [SciPy](https://scipy.org/) install
+is one `pip install hsaudiotag3k` from being ready.
 
 Author: [Todd Hartmann](https://github.com/ToddHartmann)\
 License:  Public Domain, Use At Your Own Risk
@@ -77,6 +78,31 @@ I must use `python phaseflower.py` to make sure Anaconda DOS
 shell runs the Anaconda python.exe)
 
 (Get [mpv](https://mpv.io/manual/master/) because it's great.)
+
+## Non-Standard Libraries
+
+Check your installation for these packages if it doesn't run the first try.
+They are also what you need for any virtual environment you want to use *Phaseflower* in.
+
+The following are pretty standard in [SciPy](https://scipy.org/) environments like
+[Anaconda](https://www.anaconda.com/) and [WinPython](https://winpython.github.io/)
+
+ - [numpy](https://pypi.org/project/numpy/)
+ - [matplotlib](https://pypi.org/project/matplotlib/)
+ - [skimage](https://pypi.org/project/scikit-image/)
+ - [pillow](https://pypi.org/project/Pillow/) is included in *matplotlib*.
+
+This is the only import that's not from *SciPy*-land
+ - [hsaudiotag3k](https://pypi.org/project/hsaudiotag3k/)
+
+To create a [conda](https://anaconda.org/anaconda/conda)
+virtual environment for *Phaseflower*
+```
+conda create -n phaseflower numpy matplotlib scikit-image
+conda activate phaseflower
+pip install hsaudiotag3k
+```
+
 ## Examples
 [![Simple](https://img.youtube.com/vi/7Hb88SFlkUY/0.jpg)](https://www.youtube.com/watch?v=7Hb88SFlkUY)\
 [simple.json](examples/simple.json)
@@ -139,6 +165,31 @@ shell runs the Anaconda python.exe)
     }
 }
 ```
+
+[![Christmas Star](https://img.youtube.com/vi/nNT7QcTUrOU/0.jpg)](https://www.youtube.com/watch?v=nNT7QcTUrOU)\
+[xmas.json](examples/xmas.json)
+
+Take [simple.json](examples/simple.json), turn off the blues,
+add trig, and it's a Christmas-colored five-pointed star blobulator!
+```
+{
+    "colorspace": "rgb",
+    "coloroptions": [["red", "green", "blue"], [1, 2, 0], [false, true, false]],
+    "wavelist":
+    {
+        "zoom": {"cx": 0.0, "cy": 0.0, "x": 1920, "y": 1080, "z": 0.5},
+        "guid": "e7128a02-6405-4baa-a863-aa7899744897",
+        "waves":
+        [
+            {"amp": 0.999999, "cx":  0.000000, "cy":  6.283185, "exp": 1, "freq": 3, "phase": 0.0},
+            {"amp": 0.999999, "cx":  5.975664, "cy":  1.941611, "exp": 1, "freq": 3, "phase": 0.0},
+            {"amp": 0.999999, "cx":  3.693164, "cy": -5.083204, "exp": 1, "freq": 3, "phase": 0.0},
+            {"amp": 0.999999, "cx": -3.693164, "cy": -5.083204, "exp": 1, "freq": 3, "phase": 0.0},
+            {"amp": 0.999999, "cx": -5.975664, "cy":  1.941611, "exp": 1, "freq": 3, "phase": 0.0}
+        ]
+    }
+}
+```
 ## JSON Format
 
 Keeping it [simple.json](examples/simple.json)
@@ -148,7 +199,9 @@ Keeping it [simple.json](examples/simple.json)
 ```
 The name of the `colorspace`, then its options:
 names of the color components, how many bands (repetitions)
-each component has, and whether they are inverted.
+each component has, and whether they are inverted.  If a band is zero there will
+be none of that component in the output.
+
 ```
 	"zoom": {"cx": 0.0, "cy": 0.0, "x": 512, "y": 512, "z": 1.0},
 ```
@@ -177,11 +230,12 @@ One day I was automating (in Python) a [music art thing](https://soundcloud.com/
 stumbled across this algorithm that reminded me of 
 [*Flowfazer*](https://apps.apple.com/us/app/flowfazer/id507935335).
 
-The main structure is a list of waves.  Each 2D sine wave gets its own plane.
+The main structure is a list of waves.  Each 2D sine wave gets its own plane of complex numbers.
 These planes are added together (averaged), and then funky colors are applied.
 
 Under the hood, the "sine" is just the imaginary part of a [phasor](https://mathworld.wolfram.com/Phasor.html) plane.
-(So that's the etymology of "*Flowfazer*!")
+(So that's the etymology of "*Flowfazer*!")  This plane gets multiplied by the angular phasor for
+each next frame.
 
 These sines are raised to an exponent, which makes the waves narrower
 (no longer sines) for added variety.
@@ -203,3 +257,12 @@ There are obvious untaken opportunities for optimization.  For example, there's 
 for waves with frequencies greater than one to calculate second, third, or eighth cycles.
 The first cycle should be cached and re-used.  I went with "keep it simple" over speed,
 and to atone have started rewriting it in C++ in hopes of getting it over 30fps.
+
+#### The Trig
+```
+import math
+for i in range(0, 5):
+    phi = i * math.pi * 2 / 5
+    r = math.pi * 2
+    print('"cx": {:.6f}, "cy": {:.6f},'.format(r * math.sin(phi), r * math.cos(phi)))
+```
