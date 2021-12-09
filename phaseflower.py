@@ -1,5 +1,5 @@
 #-------------------------------------------------------------------------------
-# Name:        PhaseFlowEr
+# Name:        Phaseflower
 # Purpose:
 #
 # Author:      toddh
@@ -769,5 +769,5 @@ if __name__ == '__main__':
 #    pr.disable()
     #statme(pr)
 
-    print("PhaseFlowEr Finished.")
+    print("Phaseflower Finished.")
     pass
