@@ -622,7 +622,7 @@ def main_movie( infile=None, outname=None, incolor=None, *, xyz ):
     comtag = str(fields)
 
     FFMpegWriter = manimation.writers['ffmpeg']
-    metadata = dict(title=str(fields.guid), artist='@toddhisattva', comment=comtag)
+    metadata = dict(title=str(fields.guid), comment=comtag, artist='@toddhisattva', composer='https://github.com/ToddHartmann/phaseflower-py')
     writer = FFMpegWriter(fps=mfps, codec='libx264', metadata=metadata)
 
     outfilename = dofilename(fields.guid, outname, '.mp4')
