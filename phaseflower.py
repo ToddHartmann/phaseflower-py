@@ -235,7 +235,7 @@ class wavefield:
         self.t += self.omega
         #self.z += self.omega
 
-        self.rs =  np.imag(self.vz) * self.amp
+        self.rs =  np.power(np.imag(self.vz), self.exp) * self.amp
         self.vz *= self.phasor
 
 # end class wavefield
