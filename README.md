@@ -122,7 +122,8 @@ pip install hsaudiotag3k
 }
 ```
 
-[![Simple](https://img.youtube.com/vi/xdwipXjREdA/0.jpg)](https://www.youtube.com/watch?v=xdwipXjREdA)\
+
+[![Simple](https://img.youtube.com/vi/hk_59Um24ck/0.jpg)](https://www.youtube.com/watch?v=hk_59Um24ck)\
 [smrat.json](examples/smrat.json)
 
 ```
@@ -144,7 +145,7 @@ pip install hsaudiotag3k
 }
 ```
 
-[![Greenrose](https://img.youtube.com/vi/QxRH4npChq4/0.jpg)](https://www.youtube.com/watch?v=QxRH4npChq4)\
+[![Greenrose](https://img.youtube.com/vi/3SoqAN9dpTs/0.jpg)](https://www.youtube.com/watch?v=3SoqAN9dpTs)\
 [grose.json](examples/grose.json)
 ```
 {
@@ -165,7 +166,6 @@ pip install hsaudiotag3k
     }
 }
 ```
-
 [![Christmas Star](https://img.youtube.com/vi/nNT7QcTUrOU/0.jpg)](https://www.youtube.com/watch?v=nNT7QcTUrOU)\
 [xmas.json](examples/xmas.json)
 
@@ -189,6 +189,14 @@ add trig, and it's a Christmas-colored five-pointed star blobulator!
         ]
     }
 }
+```
+#### The Trig
+```
+import math
+r = math.pi * 2
+for i in range(0, 5):
+    phi = i * math.pi * 2 / 5
+    print('"cx": {:.6f}, "cy": {:.6f},'.format(r * math.sin(phi), r * math.cos(phi)))
 ```
 ## JSON Format
 
@@ -224,7 +232,6 @@ a frequency of one will go through one cycle over the length of the video.
 Freq of 2, will go through two cycles.
 
 ## Explanation, Excuses, Etcetera
-
 One day I was automating (in Python) a [music art thing](https://soundcloud.com/todd-hartmann/indexed) I had been doing in 
 [GIMP](https://www.gimp.org/) and
 stumbled across this algorithm that reminded me of 
@@ -233,12 +240,15 @@ stumbled across this algorithm that reminded me of
 The main structure is a list of waves.  Each 2D sine wave gets its own plane of complex numbers.
 These planes are added together (averaged), and then funky colors are applied.
 
-Under the hood, the "sine" is just the imaginary part of a [phasor](https://mathworld.wolfram.com/Phasor.html) plane.
-(So that's the etymology of "*Flowfazer*!")  This plane gets multiplied by the angular phasor for
-each next frame.
+Under the hood, the "sine" is just the imaginary part of a vector plane.
+This plane gets multiplied by the angular
+[phasor](https://mathworld.wolfram.com/Phasor.html) for
+each next frame.  (So that's the etymology of "*Flowfazer*!")
 
 These sines are raised to an exponent, which makes the waves narrower
-(no longer sines) for added variety.
+(no longer sines) for added variety, such as cruciform flying eyes:
+
+![Flying Eyes](examples/fleyes.png)
 
 By making the frequencies of the waves integers, we guarantee they loop.
 
@@ -247,7 +257,7 @@ Scikit-Image's [`color`](https://scikit-image.org/docs/dev/api/skimage.color.htm
 module to turn the averaged waves into color plots.  Each color component
 is a ramp 0 to 1 or inverted, and is modulo-chopped into repeating bands.
 
-The UUID is meant to tag the thing as an individual work of art.  They are clunky
+The UUID is meant to tag each loop as an individual work of art.  They are clunky
 and I could have used something shorter.  Sorry.
 
 The program seems slow.  Especially since *Flowfazer* ran at a nice 
@@ -258,11 +268,4 @@ for waves with frequencies greater than one to calculate second, third, or eight
 The first cycle should be cached and re-used.  I went with "keep it simple" over speed,
 and to atone have started rewriting it in C++ in hopes of getting it over 30fps.
 
-#### The Trig
-```
-import math
-for i in range(0, 5):
-    phi = i * math.pi * 2 / 5
-    r = math.pi * 2
-    print('"cx": {:.6f}, "cy": {:.6f},'.format(r * math.sin(phi), r * math.cos(phi)))
-```
+Feel free to fork and improve.
